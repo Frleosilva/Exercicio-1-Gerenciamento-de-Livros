@@ -1,7 +1,6 @@
 package com.ex01.atividade01.Controllers;
 
 import com.ex01.atividade01.Models.LivroModel;
-import com.ex01.atividade01.Repositories.LivroRepository;
 import com.ex01.atividade01.Services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "livros")
+@RequestMapping(path = "/livros")
 
 public class LivroController {
 
@@ -27,7 +26,7 @@ public class LivroController {
 
     @PostMapping
     public ResponseEntity<LivroModel> criarProduto(@RequestBody LivroModel livroModel){
-        LivroModel request = livroService.criarLivro(LivroModel);
+        LivroModel request = livroService.criarLivro(livroModel);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(livroModel.getId())
                 .toUri();

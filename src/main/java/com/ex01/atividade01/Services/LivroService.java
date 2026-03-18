@@ -26,15 +26,15 @@ public class LivroService {
         return livroRepository.findById(id);
     }
 
-    public LivroModel atualizar(LivroModel livroModel) {
-        LivroModel livro = livroRepository.findById(livroModel.getId()).get();
-        livro.setTitulo(livroModel.getTitulo());
-        livro.setAutor(livroModel.getAutor());
-        livro.setAnoPublicacao(livroModel.getAnoPublicacao());
-        return livroRepository.save(livro);
+    public LivroModel atualizar(Long id, LivroModel livroModel) {
+        LivroModel newLivro = livroRepository.findById(id).get();
+        newLivro.setTitulo(livroModel.getTitulo());
+        newLivro.setAutor(livroModel.getAutor());
+        newLivro.setAnoPublicacao(livroModel.getAnoPublicacao());
+        return livroRepository.save(newLivro);
     }
 
-    public void deletar(Long id, LivroModel livroModel) {
+    public void deletar(Long id) {
         livroRepository.deleteById(id);
     }
 }
